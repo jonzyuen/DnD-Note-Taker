@@ -6,8 +6,7 @@ const locationSchema = new Schema({
     required: true
   },
   description: {
-    type: String,
-    required: true
+    type: String
   }
 }, {
   timestamps: true
@@ -24,3 +23,7 @@ module.exports = locationSchema;
 // Characters associated: Nate
 // Description: lorem ipsum blah blah #Jane was here, #Greg was also here blah
 // We came here from @Arizona with $Nate
+
+// pc pc and location is tied to group id so make sure that includes
+// can add authentication later
+// will use push

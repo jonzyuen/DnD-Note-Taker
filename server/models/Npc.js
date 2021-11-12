@@ -9,6 +9,8 @@ const npcSchema = new Schema({
     type: String,
     required: true
   }
+}, {
+  timestamps: true
 });
 
 module.exports = npcSchema;

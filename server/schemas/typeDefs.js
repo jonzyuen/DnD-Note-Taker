@@ -9,7 +9,8 @@ const typeDefs = gql`
   }
 
   type Group {
-    name: String
+    _id: ID!
+    name: String!
     users: [User]
     notes: [Note]
     locations: [Location]
@@ -25,7 +26,7 @@ const typeDefs = gql`
   type Location {
     _id: ID!
     name: String!
-    description: String!
+    description: String
   }
 
   type Auth {
@@ -34,13 +35,18 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    
-    addUser(name: String!, email: String!, password: String!) : Auth
-    
+    addUser(name: String!, email: String!, password: String!): Auth
+    addGroup(name: String!): Group
+    addLocation(name: String!, description: String, groupId: ID!): Group
+    joinGroup(userid and groupid): 
   }
 
   type Query {
     groups: [Group]
+    group(_id: ID): Group
+    locations: [Location]
+    location: Location
+    users(_id: ID): User
   }
 
   
