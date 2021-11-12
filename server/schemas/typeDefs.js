@@ -14,6 +14,8 @@ const typeDefs = gql`
     users: [User]
     notes: [Note]
     locations: [Location]
+    npcs: [Npc]
+    pcs: [Pc]
   }
 
   type Note {
@@ -29,6 +31,18 @@ const typeDefs = gql`
     description: String
   }
 
+  type Npc {
+    _id: ID!
+    name: String!
+    description: String
+  }
+
+  type Pc {
+    _id: ID!
+    name: String!
+    description: String
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -36,9 +50,12 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(name: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     addGroup(name: String!): Group
-    addLocation(name: String!, description: String, groupId: ID!): Group
-    joinGroup(userid and groupid): 
+    addLocation(name: String!, groupId: ID!, description: String): Group
+    addNpc(name: String!, groupId: ID!): Group
+    joinGroup(userId: ID!, groupId: ID!): Group
+    addPc(name: String!, groupId: ID!): Group
   }
 
   type Query {
@@ -46,18 +63,13 @@ const typeDefs = gql`
     group(_id: ID): Group
     locations: [Location]
     location: Location
-    users(_id: ID): User
+    users: [User]
+    user(_id: ID): User
   }
-
-  
 `;
 
 module.exports = typeDefs;
 
 // mutations
 // login(email: String!, password: String!): Auth
-// addGroup()
-//     addPc()
 //     addNote()
-//     addLocation()
-//     addNpc()
