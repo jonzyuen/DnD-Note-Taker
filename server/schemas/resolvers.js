@@ -27,7 +27,12 @@ const resolvers = {
     locations: async () => {
       return Group.find()
         .populate('locations')
-    }
+    },
+
+    note: async (parent, { _id }) => {
+      return await Group.findOne({ _id })
+        .populate('notes')
+    },
   },
 
   Mutation: {
@@ -57,7 +62,6 @@ const resolvers = {
     },
 
     addGroup: async (parent, args) => {
-      console.log(args);
       const group = await Group.create(args);
 
       return group;
@@ -115,16 +119,14 @@ const resolvers = {
       return group;
     }, 
 
-    addPc: async (parent, { name, description, groupId }) => {
-      // find one group and update, 
-      // push location object to locations array
-      const pc = await Group.findByIdAndUpdate(
+    addNote: async (parent, { title, noteText, groupId }) => {
+      const note = await Group.findByIdAndUpdate(
         { _id: groupId },
-        { $addToSet: { pcs: { name, description } } },
+        { $addToSet: { notes: { title, noteText } } },
         { new: true }
       )
-      
-      return pc;
+
+      return note;
     }
   }
 };

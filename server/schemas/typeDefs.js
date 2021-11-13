@@ -56,6 +56,7 @@ const typeDefs = gql`
     addNpc(name: String!, groupId: ID!): Group
     joinGroup(userId: ID!, groupId: ID!): Group
     addPc(name: String!, groupId: ID!): Group
+    addNote(title: String!, groupId: ID!, noteText: String!): Group
   }
 
   type Query {
@@ -65,11 +66,12 @@ const typeDefs = gql`
     location: Location
     users: [User]
     user(_id: ID): User
+    note(_id: ID): Note
   }
 `;
 
 module.exports = typeDefs;
 
-// mutations
-// login(email: String!, password: String!): Auth
-//     addNote()
+// possible to do
+// logout
+// delete notes, locations, npcs, etc
