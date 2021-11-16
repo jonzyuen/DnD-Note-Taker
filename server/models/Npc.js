@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 
 const npcSchema = new Schema({
   name: {
@@ -9,6 +9,8 @@ const npcSchema = new Schema({
     type: String,
     required: true
   }
+}, {
+  timestamps: true
 });
 
 module.exports = npcSchema;

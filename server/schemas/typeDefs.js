@@ -9,10 +9,13 @@ const typeDefs = gql`
   }
 
   type Group {
-    name: String
+    _id: ID!
+    name: String!
     users: [User]
     notes: [Note]
     locations: [Location]
+    npcs: [Npc]
+    pcs: [Pc]
   }
 
   type Note {
@@ -25,7 +28,19 @@ const typeDefs = gql`
   type Location {
     _id: ID!
     name: String!
-    description: String!
+    description: String
+  }
+
+  type Npc {
+    _id: ID!
+    name: String!
+    description: String
+  }
+
+  type Pc {
+    _id: ID!
+    name: String!
+    description: String
   }
 
   type Auth {
@@ -34,24 +49,29 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    
-    addUser(name: String!, email: String!, password: String!) : Auth
-    
+    addUser(name: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    addGroup(name: String!): Group
+    addLocation(name: String!, groupId: ID!, description: String): Group
+    addNpc(name: String!, groupId: ID!): Group
+    joinGroup(userId: ID!, groupId: ID!): Group
+    addPc(name: String!, groupId: ID!): Group
+    addNote(title: String!, groupId: ID!, noteText: String!): Group
   }
 
   type Query {
     groups: [Group]
+    group(_id: ID): Group
+    locations: [Location]
+    location: Location
+    users: [User]
+    user(_id: ID): User
+    note(_id: ID): Note
   }
-
-  
 `;
 
 module.exports = typeDefs;
 
-// mutations
-// login(email: String!, password: String!): Auth
-// addGroup()
-//     addPc()
-//     addNote()
-//     addLocation()
-//     addNpc()
+// possible to do
+// logout
+// delete notes, locations, npcs, etc

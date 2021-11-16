@@ -1,6 +1,8 @@
 const { Schema, model } = require('mongoose');
 const locationSchema = require('./Location');
 const noteSchema = require('./Note');
+const npcSchema = require('./Npc');
+const pcSchema = require('./Pc');
 
 const groupSchema = new Schema({
   name: {
@@ -15,8 +17,8 @@ const groupSchema = new Schema({
 	],
 	notes: [noteSchema],
   locations: [locationSchema],
-	// pcs: [],
-  // npcs: []
+	pcs: [pcSchema],
+  npcs: [npcSchema]
 }, {
   timestamps: true
 });
