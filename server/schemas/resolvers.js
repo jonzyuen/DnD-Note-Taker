@@ -5,17 +5,17 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find()
+      return await User.find()
         .populate('groups')
     },
 
-    user: async (parent, { username }) => {
-      return User.findOne({ username })
+    user: async (parent, { _id }) => {
+      return await User.findOne({ _id })
         .populate('groups')
     },
 
     groups: async () => {
-      return Group.find()
+      return await Group.find()
         .populate('users')
     },
 
@@ -25,7 +25,7 @@ const resolvers = {
     },
 
     locations: async () => {
-      return Group.find()
+      return await Group.find()
         .populate('locations')
     },
 
@@ -40,7 +40,7 @@ const resolvers = {
       const user = await User.create(args);
       const token = signToken(user);
 
-      return { token, user };
+      return await { token, user };
     },
 
     login: async (parent, { email, password }) => {
@@ -58,13 +58,13 @@ const resolvers = {
 
       const token = signToken(user);
 
-      return { token, user }
+      return await { token, user }
     },
 
     addGroup: async (parent, args) => {
       const group = await Group.create(args);
 
-      return group;
+      return await group;
     },
 
     addLocation: async (parent, { name, description, groupId }) => {
@@ -76,7 +76,7 @@ const resolvers = {
         { new: true }
       )
       
-      return group;
+      return await group;
     },
 
     addNpc: async (parent, { name, description, groupId }) => {
@@ -88,7 +88,7 @@ const resolvers = {
         { new: true }
       )
       
-      return npc;
+      return await npc;
     },
 
     addPc: async (parent, { name, description, groupId }) => {
@@ -100,7 +100,7 @@ const resolvers = {
         { new: true }
       )
       
-      return pc;
+      return await pc;
     },
 
     joinGroup: async (parent, { userId, groupId }) => {
@@ -116,7 +116,7 @@ const resolvers = {
         { new: true }
       )
 
-      return group;
+      return await group;
     }, 
 
     addNote: async (parent, { title, noteText, groupId }) => {
@@ -126,7 +126,7 @@ const resolvers = {
         { new: true }
       )
 
-      return note;
+      return await note;
     }
   }
 };

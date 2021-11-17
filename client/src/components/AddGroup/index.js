@@ -1,66 +1,56 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
 import { ADD_GROUP } from '../../utils/mutations';
 
-// import Auth from '../../utils/auth';
+import Auth from '../../utils/auth';
 
 function AddGroup() {
-  const [userFormData, setUserFormData] = useState({
-    name: '',
-  });
+  const [name, setName] = useState('');
 
-  const [addGroup] = useMutation(ADD_GROUP);
-
+  const [addGroup, { error }] = useMutation(ADD_GROUP);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setUserFormData({ ...userFormData, [name]: value });
-  };
+
+    console.log(name, value);
+
+    switch(name) {
+      case 'name':
+        setName(value);
+        break;
+    }
+  }
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const { data } = await addGroup({
-        variables: { ...userFormData },
+        variables: { name },
       });
       console.log(data);
+      Auth.login(data.addGroup.token)
     } catch (err) {
       console.error(err);
     }
 
-    setUserFormData({
-      name: '',
-    });
+    setName('');
   };
 
-  return (
-    <main>
-      <h1>Add Group</h1>
-      <form noValidate onSubmit={handleFormSubmit}>
-
-        <div>
-          <div className='form'>
-            <label>Enter a Group Name: </label>
-            <input type='text'
-              name='name'
-              placeholder='Group Name'
-              onChange={handleInputChange}
-              value={userFormData.name}
-              required
-            />
-          </div>
-        </div>
-
-        <button 
-          type='submit'
-        >
-          Add Group!
-        </button>
-      </form>
-    </main>
-  )
+	return (
+		<div className="container">
+			<main className="row">
+				<form onSubmit={handleFormSubmit}>
+					<div className="form-group">
+						<label htmlFor="form">Group Name</label>
+						<input required onChange={handleInputChange} type="text" className="form-control" id="name" name="name" placeholder="Enter name" />
+					</div>
+					<button type="submit" className="btn btn-primary">Submit</button>
+				</form>
+			</main>
+		</div>
+	);
 }
 
 export default AddGroup;
