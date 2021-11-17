@@ -1,4 +1,10 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Header from './components/Header';
+import Login from './components/Login';
+import Signup from './components/Signup';
+
 import './App.css';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 const httpLink = createHttpLink({
@@ -10,24 +16,28 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+// const Home = () => <span>Home</span>;
+// const Login = () => <span>Login</span>;
+// const Signup = () => <span>Signup</span>;
+// const Joingroup = () => <span>Joingroup</span>;
+// const Addnote = () => <span>Addnote</span>;
+// const Addnpc = () => <span>Addnpc</span>;
+// const Addlocation = () => 
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <Router>
+        <Header />
+
+        <Routes>
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/login" element={<Login />} />
+          {/* <Route exact path="/logout" component={Logout} /> */}
+        </Routes>
+
+      </Router>
+    </ApolloProvider>
   );
 }
 
