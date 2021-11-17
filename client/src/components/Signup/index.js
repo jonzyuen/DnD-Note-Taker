@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 // import { Form, Button, Alert } from 'react-bootstrap';
 import { Alert } from 'react-bootstrap';
+
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
+
 import Auth from '../../utils/auth';
 
 function Signup() {
@@ -14,7 +16,6 @@ function Signup() {
 
   const [validated] = useState(false);
 
-  // const [showAlert, setShowAlert] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
   const [addUser, { error }] = useMutation(ADD_USER);
@@ -76,10 +77,10 @@ function Signup() {
           <div className='form'>
             <label for='email'>Email: </label>
             <input type='email'
-              className='email'
+              name='email'
               id='email'
               onChange={handleInputChange}
-              // value={userFormData.email}
+              value={userFormData.email}
               required
             />
           </div>
@@ -90,11 +91,10 @@ function Signup() {
           <div className='form'>
             <label for='username'>Username: </label>
             <input type='text'
-              className='username'
+              name='username'
               id='username'
-              // value={userFormData.username}
               onChange={handleInputChange}
-              // value={userFormData.username}
+              value={userFormData.username}
               required
             />
           </div>
@@ -105,10 +105,10 @@ function Signup() {
           <div className='form'>
             <label for='password'>Password: </label>
             <input type='text'
-              className='password'
+              name='password'
               id='password'
               onChange={handleInputChange}
-              // value={userFormData.password}
+              value={userFormData.password}
               required
             />
           </div>
@@ -116,13 +116,13 @@ function Signup() {
 
         {/* button */}
         <button 
-        // disabled={
-        //     !(
-        //       userFormData.username &&
-        //       userFormData.email &&
-        //       userFormData.password
-        //     )
-        //   }
+        disabled={
+            !(
+              userFormData.username &&
+              userFormData.email &&
+              userFormData.password
+            )
+          }
           type='submit'
           variant='success'
         >
