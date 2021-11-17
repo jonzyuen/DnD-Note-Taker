@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import AddNote from './components/AddNote';
 import AddNpc from './components/AddNpc';
 import NoMatch from './pages/NoMatch';
+import GroupPage from './pages/GroupPage';
 
 import './App.css';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
@@ -45,6 +46,7 @@ function App() {
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/addGroup' element={<AddGroup />} />
           <Route exact path='/profile' element={<Profile />} />
+          <Route exact path='/group/:id' element={<GroupPage />} />
 
 
           {/* these will become '.../:groupId/(element)' */}

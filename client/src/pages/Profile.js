@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_GROUPS } from '../utils/queries';
-import { JOIN_GROUP } from '../utils/mutations';
+// import { JOIN_GROUP } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
@@ -14,43 +16,72 @@ const Profile = () => {
     variables: { _id: user.data._id },
   });
 
-  const dbRes = data?.user || {};
+  const { loading: groupsLoading, data: groupsData } = useQuery(QUERY_GROUPS);
 
-  if (loading) {
+  // const [joinGroup, { error }] = useMutation(JOIN_GROUP);
+
+  const dbRes = data?.user || {};
+  const dbGroupsRes = groupsData?.groups || {};
+
+  // const handleOnClick = async event => {
+  //   event.preventDefault();
+
+  //   const groupId = event.target.getAttribute('data-group-id');
+
+  //   await joinGroup({
+  //     variables: {
+  //       userId: user.data._id,
+  //       groupId
+  //     }
+  //   });
+
+  //   window.location.reload();
+  // }
+
+  if (loading || groupsLoading) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className='container'>
       <main className='row'>
+        {/* <pre>{JSON.stringify(dbRes, null, 2)}</pre> */}
 
-        <pre>{JSON.stringify(dbRes, null, 2)}</pre>
-        
-        <h2>Your groups</h2>
-        {dbRes && dbRes.groups.map(group => {
-          return <p>{group.name} <button className="btn btn-success">JOIN</button></p>
-        })}
+        <h2>Your Groups</h2>
+        <div className="row">
+          {dbRes && dbRes.groups.map(group => {
+            return (
+              <div className="col-md-3 my-2">
+                <div className="card">
+                  {/* <img className="card-img-top pt-3" src="http://placehold.it/600x400" alt="Card image cap" /> */}
+                  <div className="card-body">
+                  <h5 className="card-title"><Link to={`/group/${group._id}`} user={user}>{group.name}</Link></h5>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
 
-        {/* make one for all groups, add button for joining */}
+        <h2>All Groups</h2>
+        <div className="row">
+          {dbGroupsRes && dbGroupsRes.map(group => {
+            return (
+              <div className="col-md-3 my-2">
+                <div className="card">
+                  {/* <img className="card-img-top pt-3" src="http://placehold.it/600x400" alt="Card image cap" /> */}
+                  <div className="card-body">
+                    <h5 className="card-title"><Link to={`/group/${group._id}`}>{group.name}</Link></h5>
+                    
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </main>
     </div>
-
-    // <div>
-    //   <div className="flex-row mb-3">
-    //     <h2 className="bg-dark text-secondary p-3 display-inline-block">
-    //       {/* Viewing <usernames>'s profile. */}
-    //     </h2>
-    //   </div>
-
-    //   <div className="flex-row justify-space-between mb-3">
-    //     <div className="col-12 mb-3 col-lg-8">{/* PRINT THOUGHT LIST  */}</div>
-
-    //     <div className="col-12 col-lg-3 mb-3">{/* PRINT FRIEND LIST */}</div>
-    //   </div>
-    // </div>
   );
-
-
 };
 
 export default Profile;

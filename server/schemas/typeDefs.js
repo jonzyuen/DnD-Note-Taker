@@ -67,6 +67,7 @@ const typeDefs = gql`
     users: [User]
     user(_id: ID): User
     note(_id: ID): Note
+    notes: [Note]
   }
 `;
 
