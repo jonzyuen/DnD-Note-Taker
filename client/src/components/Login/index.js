@@ -59,6 +59,7 @@ function Login() {
 
   return (
     <main>
+      <h1>Login</h1>
       <form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert
           dismissible
@@ -69,41 +70,42 @@ function Login() {
           Something went wrong with your login.
         </Alert>
 
-        <form>
+        <div>
           <div className='form'>
-            <label for='username'>Username: </label>
+            <label>Enter your Username: </label>
             <input type='text'
               name='username'
               id='username'
+              placeholder='Username'
               onChange={handleInputChange}
               value={userFormData.username}
               required
             />
           </div>
-        </form>
+        </div>
 
-        <form>
+        <div>
           <div className='form'>
-          <label for='password'>Password: </label>
+            <label>Enter your Password: </label>
             <input type='text'
               name='password'
               id='password'
+              placeholder='Password'
               onChange={handleInputChange}
               value={userFormData.password}
               required
             />
           </div>
-        </form>
+        </div>
 
-        <button 
-        disabled={
+        <button
+          disabled={
             !(
               userFormData.username &&
               userFormData.password
             )
           }
           type='submit'
-          variant='success'
         >
           Login!
         </button>

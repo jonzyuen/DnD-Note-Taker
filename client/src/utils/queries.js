@@ -1,3 +1,10 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_ME = gql``;
+export const GROUPS = gql`
+  query groups {
+    groups {
+      _id
+      name
+    }
+  }
+`;
