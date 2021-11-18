@@ -22,6 +22,8 @@ const resolvers = {
     group: async (parent, { _id }) => {
       return await Group.findOne({ _id })
         .populate('users')
+        .populate('notes');
+        // finish populating other pages
     },
 
     locations: async () => {

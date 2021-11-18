@@ -5,7 +5,6 @@ import { useQuery } from '@apollo/client';
 // import { ADD_NOTE } from '../utils/mutations';
 import { QUERY_NOTES, QUERY_GROUP } from '../utils/queries';
 
-
 const Notes = () => {
   // const [addNote, { error }] = useMutation(ADD_NOTE);
   const { loading, data } = useQuery(QUERY_NOTES);
@@ -38,7 +37,7 @@ const Notes = () => {
         <main className='row'>
           <h2>Your Notes</h2>
           <div className='row'>
-          <pre>{JSON.stringify(dbRes, null, 2)}</pre>
+          {/* <pre>{JSON.stringify(dbRes, null, 2)}</pre> */}
             <div className='col-md-3 my-2'>
               <div className='card'>
                 <div className='card-body'>

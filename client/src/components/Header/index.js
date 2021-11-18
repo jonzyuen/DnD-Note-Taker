@@ -23,21 +23,9 @@ function Header() {
 								<Link className="nav-link" to="/addGroup">Add Group</Link>
 							</li>
 
-                {/* special starts here */}
               <li className="nav-item">
-                {/* '.../addNote' will become '.../groupId/addNote' */}
-								<Link className="nav-link" to="/addNote">Add Note</Link>
-							</li>
-
-              <li className="nav-item">
-								<Link className="nav-link" to="/addNpc">Add Npc</Link>
-							</li>
-
-              <li className="nav-item">
-                {/* '.../profile' will become '.../profile/:userId' */}
 								<Link className="nav-link" to="/profile">Profile</Link>
 							</li>
-                {/* special end here */}
 
 							<li className="nav-item">
 								<Link className="nav-link" to="/logout">Logout</Link>

@@ -18,6 +18,12 @@ export const QUERY_GROUP = gql`
         _id
         name
       }
+      notes {
+        _id
+        title
+        noteText
+        createdAt
+      }
     }
   }
 `;

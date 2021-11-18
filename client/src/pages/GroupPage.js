@@ -34,6 +34,8 @@ const GroupPage = () => {
   const users = usersData?.group.users || [];
   const group = usersData?.group || [];
 
+  console.log(group);
+
   // const {} = useQuery()
   // const [addNote, { error }] = useMutation(ADD_NOTE);
 
@@ -86,12 +88,22 @@ const GroupPage = () => {
                     <h5 className='card-title'>
                       Notes
                     </h5>
+
+                    {group.notes.map(note => {
+                      return (
+                        <>
+                        <p>{note.title}</p>
+                        <p>{note.noteText}</p>
+                        <hr />
+                        </>
+                      );
+                    })}
                   </div>
                 </Link>
               </div>
             </div>
 
-            <div className='col-md-3 my-2'>
+            {/* <div className='col-md-3 my-2'>
               <div className='card'>
                 <Link to={``}>
                   <div className='card-body'>
@@ -125,7 +137,7 @@ const GroupPage = () => {
                   </div>
                 </Link>
               </div>
-            </div>
+            </div> */}
           </>
         )}
       </main>

@@ -43,6 +43,14 @@ function Login() {
     setPassword('');
   };
 
+  // const handleAddUser = async (event) => {
+  //   event.preventDefault();
+
+  //   try {
+
+  //   }
+  // }
+
 	return (
 		<div className="container">
 			<main className="row">
@@ -57,7 +65,8 @@ function Login() {
 						<input required onChange={handleInputChange} type="password" className="form-control" id="password" name="password" placeholder="Password" />
 					</div>
 
-					<button type="submit" className="btn btn-primary">Submit</button>
+					<button type="submit" className="btn btn-primary">Log In</button>
+          <button className='btn btn-secondary'>Signup</button>
 				</form>
 			</main>
 		</div>
