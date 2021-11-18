@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Group } = require('../models');
+const { User, Group, Note } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -30,9 +30,26 @@ const resolvers = {
     },
 
     note: async (parent, { _id }) => {
-      return await Group.findOne({ _id })
+      return await Note.findOne({ _id })
         .populate('notes')
     },
+
+    // notes: async (parent, { _id }) => {
+    //   return await Note.find()
+    //     .populate('notes')
+    // }, 
+
+    notes: async () => {
+      return await Note.find()
+        .populate('notes')
+    }
+
+
+    // notes: async (parent, { _id }) => {
+    //   const groupId = parent._id
+    //   return await Note.find(groupId)
+    //     .populate('notes')
+    // },
   },
 
   Mutation: {
@@ -75,7 +92,7 @@ const resolvers = {
         { $addToSet: { locations: { name, description } } },
         { new: true }
       )
-      
+
       return await group;
     },
 
@@ -87,7 +104,7 @@ const resolvers = {
         { $addToSet: { npcs: { name, description } } },
         { new: true }
       )
-      
+
       return await npc;
     },
 
@@ -99,7 +116,7 @@ const resolvers = {
         { $addToSet: { pcs: { name, description } } },
         { new: true }
       )
-      
+
       return await pc;
     },
 
@@ -117,7 +134,7 @@ const resolvers = {
       )
 
       return await group;
-    }, 
+    },
 
     addNote: async (parent, { title, noteText, groupId }) => {
       const note = await Group.findByIdAndUpdate(

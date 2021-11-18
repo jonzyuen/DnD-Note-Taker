@@ -23,6 +23,7 @@ const typeDefs = gql`
     title: String!
     noteText: String!
     createdAt: String!
+    groups: [Group]
   }
 
   type Location {

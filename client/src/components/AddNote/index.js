@@ -43,8 +43,23 @@ function AddNote() {
   };
 
   return (
-    <main>
-      <h1>Add Note</h1>
+    <div className='container'>
+      <main className='row'>
+        <form onSubmit={handleFormSubmit}>
+          <div class="form-group">
+            <label htmlFor="title" class="form-label">Title</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <button type='submit' className='btn btn-primary'>Submit</button>
+        </form>
+
+
+
+        {/* <h1>Add Note</h1>
       <form onSubmit={handleFormSubmit}>
         <div>
           <div className='form'>
@@ -75,8 +90,9 @@ function AddNote() {
         <button>
           Submit!
         </button>
-      </form>
-    </main>
+      </form> */}
+      </main>
+    </div>
   );
 }
 
