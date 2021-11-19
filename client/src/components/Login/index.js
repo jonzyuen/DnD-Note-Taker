@@ -52,21 +52,21 @@ function Login() {
   // }
 
 	return (
-		<div className="container">
-			<main className="row">
+		<div className='container'>
+			<main className='row'>
 				<form onSubmit={handleFormSubmit}>
-					<div className="form-group">
-						<label htmlFor="email">Email address</label>
-						<input required onChange={handleInputChange} type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" />
+					<div className='form-group'>
+						<label htmlFor='email'>Email address</label>
+						<input required onChange={handleInputChange} type='email' className='form-control' id='email' name='email' aria-describedby='emailHelp' placeholder='Enter email' />
 					</div>
 
-					<div className="form-group mb-3">
-						<label htmlFor="password">Password</label>
-						<input required onChange={handleInputChange} type="password" className="form-control" id="password" name="password" placeholder="Password" />
+					<div className='form-group mb-3'>
+						<label htmlFor='password'>Password</label>
+						<input required onChange={handleInputChange} type='password' className='form-control' id='password' name='password' placeholder='Password' />
 					</div>
 
-					<button type="submit" className="btn btn-primary">Log In</button>
-          <button className='btn btn-secondary'>Signup</button>
+					<button type='submit' className='btn btn-primary'>Log In</button>
+          {/* <button className='btn btn-secondary'>Signup</button> */}
 				</form>
 			</main>
 		</div>

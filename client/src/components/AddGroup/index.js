@@ -30,23 +30,23 @@ function AddGroup() {
         variables: { name },
       });
       console.log(data);
-      // Auth.login(data.addGroup.token)
     } catch (err) {
       console.error(err);
     }
 
     setName('');
+    window.location.reload();
   };
 
 	return (
-		<div className="container">
-			<main className="row">
+		<div className='container'>
+			<main className='row'>
 				<form onSubmit={handleFormSubmit}>
-					<div className="form-group">
-						<label htmlFor="form">Group Name</label>
-						<input required onChange={handleInputChange} type="text" className="form-control" id="name" name="name" placeholder="Enter name" />
+					<div className='form-group'>
+						<label htmlFor='form'>Group Name</label>
+						<input required onChange={handleInputChange} type='text' className='form-control' id='name' name='name' placeholder='Enter name' />
 					</div>
-					<button type="submit" className="btn btn-primary">Submit</button>
+					<button type='submit' className='btn btn-primary'>Submit</button>
 				</form>
 			</main>
 		</div>

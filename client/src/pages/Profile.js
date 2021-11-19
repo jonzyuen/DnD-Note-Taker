@@ -40,32 +40,32 @@ const Profile = () => {
     <div className='container'>
       <main className='row'>
         {/* <pre>{JSON.stringify(dbRes, null, 2)}</pre> */}
-
+        <h1>{user.name}</h1>
         <h2>Your Groups</h2>
-        <div className="row">
+        <div className='row'>
           {dbRes && dbRes.groups.map(group => {
             return (
-              <div className="col-md-3 my-2">
-                <div className="card">
-                  {/* <img className="card-img-top pt-3" src="http://placehold.it/600x400" alt="Card image cap" /> */}
-                  <div className="card-body">
-                    <h5 className="card-title"><Link to={`/group/${group._id}`} user={user}>{group.name}</Link></h5>
+              <div className='col-md-3 my-2'>
+                <div className='card'>
+                  {/* <img className='card-img-top pt-3' src='http://placehold.it/600x400' alt='Card image cap' /> */}
+                  <div className='card-body'>
+                    <h5 className='card-title'><Link to={`/group/${group._id}`} user={user}>{group.name}</Link></h5>
                   </div>
                 </div>
               </div>
             );
           })}
-        </div>0
+        </div>
 
         <h2>All Groups</h2>
-        <div className="row">
+        <div className='row'>
           {dbGroupsRes && dbGroupsRes.map(group => {
             return (
-              <div className="col-md-3 my-2">
-                <div className="card">
-                  {/* <img className="card-img-top pt-3" src="http://placehold.it/600x400" alt="Card image cap" /> */}
-                  <div className="card-body">
-                    <h5 className="card-title">
+              <div className='col-md-3 my-2'>
+                <div className='card'>
+                  {/* <img className='card-img-top pt-3' src='http://placehold.it/600x400' alt='Card image cap' /> */}
+                  <div className='card-body'>
+                    <h5 className='card-title'>
                       <Link to={`/group/${group._id}`}>
                         {group.name}
                       </Link>

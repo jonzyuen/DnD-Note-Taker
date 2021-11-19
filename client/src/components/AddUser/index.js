@@ -46,28 +46,29 @@ function AddUser() {
 		setName('');
 		setEmail('');
 		setPassword('');
+    window.location.reload();
 	};
 
 	return (
-		<div className="container">
-			<main className="row">
+		<div className='container'>
+			<main className='row'>
 				<form onSubmit={handleFormSubmit}>
-					<div className="form-group">
-						<label htmlFor="name">Name</label>
-						<input required onChange={handleInputChange} type="text" className="form-control" id="name" name="name" placeholder="Enter name" />
+					<div className='form-group'>
+						<label htmlFor='name'>Name</label>
+						<input required onChange={handleInputChange} type='text' className='form-control' id='name' name='name' placeholder='Enter name' />
 					</div>
 
-					<div className="form-group">
-						<label htmlFor="email">Email address</label>
-						<input required onChange={handleInputChange} type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" />
+					<div className='form-group'>
+						<label htmlFor='email'>Email address</label>
+						<input required onChange={handleInputChange} type='email' className='form-control' id='email' name='email' aria-describedby='emailHelp' placeholder='Enter email' />
 					</div>
 
-					<div className="form-group mb-3">
-						<label htmlFor="password">Password</label>
-						<input required onChange={handleInputChange} type="password" className="form-control" id="password" name="password" placeholder="Password" />
+					<div className='form-group mb-3'>
+						<label htmlFor='password'>Password</label>
+						<input required onChange={handleInputChange} type='password' className='form-control' id='password' name='password' placeholder='Password' />
 					</div>
 
-					<button type="submit" className="btn btn-primary">Submit</button>
+					<button type='submit' className='btn btn-primary'>Submit</button>
 				</form>
 			</main>
 		</div>

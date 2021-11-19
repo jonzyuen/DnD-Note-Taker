@@ -44,14 +44,14 @@ function AddNote() {
     <div className='container'>
       <main className='row'>
         <form onSubmit={handleFormSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Title</label>
-            <input required onChange={handleInputChange} type="text" className="form-control" id="title" placeholder="Title" />
+          <div className='form-group'>
+            <label htmlFor='title'>Title</label>
+            <input required onChange={handleInputChange} type='text' className='form-control' id='title' placeholder='Title' />
           </div>
           
-          <div className="form-group mb-3">
-            <label htmlFor="text">Note</label>
-            <textarea required onChange={handleInputChange} type='text' className="form-control" id="noteText" placeholder='Notes' rows="3"></textarea>
+          <div className='form-group mb-3'>
+            <label htmlFor='text'>Note</label>
+            <textarea required onChange={handleInputChange} type='text' className='form-control' id='noteText' placeholder='Notes' rows='3'></textarea>
           </div>
 
           <button type='submit' className='btn btn-primary'>Submit</button>

@@ -110,14 +110,14 @@ const GroupPage = () => {
             <div className='col-md-6 my-2'>
               <h2>Notes</h2>
               <form onSubmit={handleFormSubmit} data-group-id={groupId}>
-                <div className="form-group">
-                  <label htmlFor="title">Title</label>
-                  <input required onChange={handleInputChange} type="text" className="form-control" name='title' id="title" placeholder="Title" />
+                <div className='form-group'>
+                  <label htmlFor='title'>Title</label>
+                  <input required onChange={handleInputChange} type='text' className='form-control' name='title' id='title' placeholder='Title' />
                 </div>
 
-                <div className="form-group mb-3">
-                  <label htmlFor="text">Note</label>
-                  <textarea required onChange={handleInputChange} type='text' className="form-control" name='noteText' id="noteText" placeholder='Notes' rows="3"></textarea>
+                <div className='form-group mb-3'>
+                  <label htmlFor='text'>Note</label>
+                  <textarea required onChange={handleInputChange} type='text' className='form-control' name='noteText' id='noteText' placeholder='Notes' rows='3'></textarea>
                 </div>
 
                 <button data-group-id={groupId} className='btn btn-primary'>Add Note</button>
