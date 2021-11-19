@@ -1,38 +1,36 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Group } = require('../models');
+const { User, Group, Note } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find()
+      return await User.find()
         .populate('groups')
     },
 
-    user: async (parent, { username }) => {
-      return User.findOne({ username })
+    user: async (parent, { _id }) => {
+      return await User.findOne({ _id })
         .populate('groups')
     },
 
     groups: async () => {
-      return Group.find()
+      return await Group.find()
         .populate('users')
     },
 
     group: async (parent, { _id }) => {
       return await Group.findOne({ _id })
         .populate('users')
+        .populate('notes');
+        // finish populating other pages
     },
 
     locations: async () => {
-      return Group.find()
+      return await Group.find()
         .populate('locations')
     },
 
-    note: async (parent, { _id }) => {
-      return await Group.findOne({ _id })
-        .populate('notes')
-    },
   },
 
   Mutation: {
@@ -40,7 +38,7 @@ const resolvers = {
       const user = await User.create(args);
       const token = signToken(user);
 
-      return { token, user };
+      return await { token, user };
     },
 
     login: async (parent, { email, password }) => {
@@ -58,13 +56,13 @@ const resolvers = {
 
       const token = signToken(user);
 
-      return { token, user }
+      return await { token, user }
     },
 
     addGroup: async (parent, args) => {
       const group = await Group.create(args);
 
-      return group;
+      return await group;
     },
 
     addLocation: async (parent, { name, description, groupId }) => {
@@ -75,8 +73,8 @@ const resolvers = {
         { $addToSet: { locations: { name, description } } },
         { new: true }
       )
-      
-      return group;
+
+      return await group;
     },
 
     addNpc: async (parent, { name, description, groupId }) => {
@@ -87,8 +85,8 @@ const resolvers = {
         { $addToSet: { npcs: { name, description } } },
         { new: true }
       )
-      
-      return npc;
+
+      return await npc;
     },
 
     addPc: async (parent, { name, description, groupId }) => {
@@ -99,8 +97,8 @@ const resolvers = {
         { $addToSet: { pcs: { name, description } } },
         { new: true }
       )
-      
-      return pc;
+
+      return await pc;
     },
 
     joinGroup: async (parent, { userId, groupId }) => {
@@ -116,8 +114,8 @@ const resolvers = {
         { new: true }
       )
 
-      return group;
-    }, 
+      return await group;
+    },
 
     addNote: async (parent, { title, noteText, groupId }) => {
       const note = await Group.findByIdAndUpdate(
@@ -126,7 +124,7 @@ const resolvers = {
         { new: true }
       )
 
-      return note;
+      return await note;
     }
   }
 };
