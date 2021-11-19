@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_GROUP } from '../../utils/mutations';
 
-import Auth from '../../utils/auth';
+// import Auth from '../../utils/auth';
 
 function AddGroup() {
   const [name, setName] = useState('');
@@ -30,7 +30,7 @@ function AddGroup() {
         variables: { name },
       });
       console.log(data);
-      Auth.login(data.addGroup.token)
+      // Auth.login(data.addGroup.token)
     } catch (err) {
       console.error(err);
     }

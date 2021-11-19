@@ -51,7 +51,7 @@ function App() {
           <Route exact path='/group/:id/notes' element={<Notes />} />
 
           {/* these will become '.../:groupId/(element)' */}
-          <Route exact path='/group/:id/notes/addNote' element={<AddNote />} />
+          {/* <Route exact path='/group/:id/notes/addNote' element={<AddNote />} /> */}
           <Route path='/addNpc' element={<AddNpc />} />
 
           {/* <Route exact path='/logout' element={Logout} /> */}

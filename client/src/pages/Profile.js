@@ -14,8 +14,6 @@ const Profile = () => {
 
   const { loading: groupsLoading, data: groupsData } = useQuery(QUERY_GROUPS);
 
-  // const [joinGroup, { error }] = useMutation(JOIN_GROUP);
-
   const dbRes = data?.user || {};
   const dbGroupsRes = groupsData?.groups || {};
 
@@ -41,7 +39,7 @@ const Profile = () => {
   return (
     <div className='container'>
       <main className='row'>
-        <pre>{JSON.stringify(dbRes, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(dbRes, null, 2)}</pre> */}
 
         <h2>Your Groups</h2>
         <div className="row">
@@ -57,7 +55,7 @@ const Profile = () => {
               </div>
             );
           })}
-        </div>
+        </div>0
 
         <h2>All Groups</h2>
         <div className="row">

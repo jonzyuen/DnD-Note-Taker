@@ -31,27 +31,6 @@ const resolvers = {
         .populate('locations')
     },
 
-    note: async (parent, { _id }) => {
-      return await Note.findOne({ _id })
-        .populate('notes')
-    },
-
-    // notes: async (parent, { _id }) => {
-    //   return await Note.find()
-    //     .populate('notes')
-    // }, 
-
-    notes: async () => {
-      return await Note.find()
-        .populate('notes')
-    }
-
-
-    // notes: async (parent, { _id }) => {
-    //   const groupId = parent._id
-    //   return await Note.find(groupId)
-    //     .populate('notes')
-    // },
   },
 
   Mutation: {
