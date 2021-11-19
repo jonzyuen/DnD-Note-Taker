@@ -1,15 +1,15 @@
 import React from 'react';
 
-const NoMatch = () => {
+const Home = () => {
   return (
     <div className='container'>
       <div className='row'>
         <h1>
-          Roll a perception check, you got lost!
+          Sign up or Log in!
         </h1>
       </div>
     </div>
   );
 };
 
-export default NoMatch;
+export default Home;
